@@ -20,7 +20,7 @@ namespace('App\Http\Controllers')->
 prefix('v2')->group(function () {
 	Route::prefix('task')->group(function () {
 		Route::get('/', 'api\ApiTaskController@index');
-		Route::get('{id}', 'api\ApiTaskController@getById');
+		Route::get('{name}', 'api\ApiTaskController@getByName');
 		Route::post('/', 'api\ApiTaskController@create');
 		Route::get('{id}/edit', 'api\ApiTaskController@edit');
 		Route::put('{id}', 'api\ApiTaskController@update');

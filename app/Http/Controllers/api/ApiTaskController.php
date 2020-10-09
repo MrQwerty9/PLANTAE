@@ -19,6 +19,16 @@ class ApiTaskController extends Controller
 		return response()->json(['meta' => $meta, 'data' => $task]);
 	}
 
+	function getByName(Request $request)
+	{
+		$task = \App\Models\Task::where('name', $request->name)->get();
+		$meta = [
+			'code' => Response::HTTP_OK,
+			'message' => 'Success'
+		];
+		return response()->json(['meta' => $meta, 'data' => $task]);
+	}
+
 	function create(Request $request)
 	{
 		// echo(json_encode($request->name));
@@ -46,8 +56,9 @@ class ApiTaskController extends Controller
 		echo $destination_path,'/',$taskName->task;
 		// return;
 		
-		Storage::delete(public_path('\transaction_image\tugas-shol.pdf'));
-		// $task = \App\Models\Task::where('id', '=', $request->id)->delete();
+		// Storage::delete(public_path('/transaction_image/tugas-shol.pdf'));
+		unlink($destination_path."/".$taskName->task);
+		$task = \App\Models\Task::where('id', '=', $request->id)->delete();
 		$meta = [
 			'code' => Response::HTTP_OK,
 			'message' => 'Success'
