@@ -51,7 +51,7 @@ class ApiTaskController extends Controller
 	function delete(Request $request)
 	{
 		$taskName = \App\Models\Task::select('task')->where('id', $request->id)->first();
-		$destination_path = public_path('transaction_image');
+		$destination_path = public_path('task');
 		// echo(json_encode($destination_path+'/'+$taskName));
 		// echo $destination_path,'/',$taskName->task;
 		// return;
