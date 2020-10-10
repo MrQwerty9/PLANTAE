@@ -34,7 +34,7 @@ class ApiTaskController extends Controller
 		// echo(json_encode($request->name));
 		// return;	
 		$file = $request->file('file');
-		$destination_path = public_path('/transaction_image');
+		$destination_path = public_path('task');
 		$nameFile = 'tugas-' . $request->name . "." . $file->getClientOriginalExtension();
 		$file->move($destination_path, $nameFile);
 		$request['task'] = $nameFile;
@@ -64,5 +64,11 @@ class ApiTaskController extends Controller
 			'message' => 'Success'
 		];
 		return response()->json(['meta' => $meta]);
+	}
+
+	function download(Request $request)
+	{
+		$path=public_path("task/".$request->fileName);
+		return response()->download($path);
 	}
 }

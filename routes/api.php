@@ -25,5 +25,6 @@ prefix('v2')->group(function () {
 		Route::get('{id}/edit', 'api\ApiTaskController@edit');
 		Route::put('{id}', 'api\ApiTaskController@update');
 		Route::post('/del', 'api\ApiTaskController@delete');
+		Route::get('/download/{fileName}', 'api\ApiTaskController@download');
 	});
 });
