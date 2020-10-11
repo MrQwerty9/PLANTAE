@@ -27,4 +27,10 @@ prefix('v2')->group(function () {
 		Route::post('/del', 'api\ApiTaskController@delete');
 		Route::get('/download/{fileName}', 'api\ApiTaskController@download');
 	});
+	Route::prefix('score')->group(function () {
+		Route::get('/', 'api\ApiScoreController@index');
+		Route::get('{name}', 'api\ApiScoreController@getByName');
+		Route::post('/', 'api\ApiScoreController@store');
+		Route::get('/del/{id}', 'api\ApiScoreController@destroy');
+	});
 });
