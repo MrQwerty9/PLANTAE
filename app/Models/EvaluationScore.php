@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class EvaluationScore extends Model
 {
     protected $table = 'score';
-    protected $fillable = ['name','score'];
+    protected $fillable = ['id','name','score'];
 }
